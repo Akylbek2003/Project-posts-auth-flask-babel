@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash,  redirect, url_for, session, g
 from flask_login import login_required, current_user
 from .models import Note 
 from . import db
 import json
+from website.service import get_locale
 
 views = Blueprint('views', __name__)
 
@@ -32,3 +33,14 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
             return jsonify({})
+
+
+@views.context_processor
+def inject_locale():
+    return {'get_locale': get_locale}
+
+@views.route('/setlang')
+def setlang():
+    lang = request.args.get('lang', 'en')
+    session['lang'] = lang
+    return redirect(request.referrer or '/')

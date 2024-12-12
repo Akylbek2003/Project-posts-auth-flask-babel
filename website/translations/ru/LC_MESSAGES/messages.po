@@ -1,0 +1,99 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-11 14:25+0600\n"
+"PO-Revision-Date: 2024-12-11 11:15+0600\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: website/templates/base.html:7 website/templates/base.html:17
+msgid "Home"
+msgstr "Главная"
+
+#: website/templates/base.html:18
+msgid "Logout"
+msgstr "Выйти"
+
+#: website/templates/base.html:20 website/templates/login.html:6
+#: website/templates/login.html:27
+msgid "Login"
+msgstr "Войти"
+
+#: website/templates/base.html:21 website/templates/sign_up.html:6
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: website/templates/base.html:24
+msgid "English"
+msgstr "Английский"
+
+#: website/templates/base.html:25
+msgid "Русский"
+msgstr "Русский"
+
+#: website/templates/home.html:2 website/templates/login.html:2
+#: website/templates/sign_up.html:2
+msgid "Changed"
+msgstr "Изменено"
+
+#: website/templates/home.html:5
+msgid "Notes"
+msgstr "Заметки"
+
+#: website/templates/home.html:17
+msgid "Enter note"
+msgstr "Введите заметку"
+
+#: website/templates/home.html:19
+msgid "Add Note"
+msgstr "Добавить заметку"
+
+#: website/templates/login.html:8 website/templates/sign_up.html:8
+msgid "Email Address"
+msgstr "Адрес электронной почты"
+
+#: website/templates/login.html:13 website/templates/sign_up.html:13
+msgid "Enter email"
+msgstr "Введите адрес электронной почты"
+
+#: website/templates/login.html:17 website/templates/sign_up.html:27
+msgid "Password"
+msgstr "Пароль"
+
+#: website/templates/login.html:23 website/templates/sign_up.html:33
+msgid "Enter password"
+msgstr "Введите пароль"
+
+#: website/templates/sign_up.html:17
+msgid "First Name"
+msgstr "Имя"
+
+#: website/templates/sign_up.html:23
+msgid "Enter first name"
+msgstr "Введите имя"
+
+#: website/templates/sign_up.html:37
+msgid "Password (Confirm)"
+msgstr "Пароль (подтверждение)"
+
+#: website/templates/sign_up.html:43
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
+
+#: website/templates/sign_up.html:47
+msgid "Submit"
+msgstr "Отправить"
+

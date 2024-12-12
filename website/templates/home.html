@@ -1,7 +1,8 @@
-{% extends "base.html" %} {% block title %}Changed{% endblock %}
+{% extends "base.html" %} 
+{% block title %}{{ _('Changed') }}{% endblock %}
 
 {% block content %}
-<h1 align="center">Notes</h1>
+<h1 align="center">{{ _('Notes') }}</h1>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
     <li class="list-group-item"> 
@@ -10,13 +11,12 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </li>
-        
     {% endfor %}
 </ul>
 <form method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
+    <textarea name="note" id="note" class="form-control" placeholder="{{ _('Enter note') }}"></textarea>
     <div align="center">
-        <button type="submit" class="btn btn-primary">Add Note</button>
+        <button type="submit" class="btn btn-primary">{{ _('Add Note') }}</button>
     </div>
 </form> 
 {% endblock %}

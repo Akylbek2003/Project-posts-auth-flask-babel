@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+from website.service import get_locale
+
 
 auth = Blueprint('auth', __name__)
 
@@ -22,7 +24,7 @@ def login():
             else:
                 flash('Incorrect password, try again.', category='error')
 
-    return render_template("login.html", user=current_user)
+    return render_template("login.html", user=current_user, current_locale=get_locale())
 
 @auth.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -58,9 +60,18 @@ def sign_up():
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='pbkdf2:sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            # login_user(user, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
 
-    return render_template("sign_up.html", user=current_user)
-    
+    return render_template("sign_up.html", user=current_user, current_locale=get_locale())
+
+@auth.context_processor
+def inject_locale():
+    return {'get_locale': get_locale}
+
+@auth.route('/setlang')
+def setlang():
+    lang = request.args.get('lang', 'en')
+    session['lang'] = lang
+    return redirect(request.referrer or '/')

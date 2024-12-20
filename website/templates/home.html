@@ -1,22 +1,41 @@
 {% extends "base.html" %} 
-{% block title %}{{ _('Changed') }}{% endblock %}
+{% block title %}{{ _('Notes') }}{% endblock %}
 
 {% block content %}
 <h1 align="center">{{ _('Notes') }}</h1>
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
-    <li class="list-group-item"> 
-        {{ note.data }} 
-        <button type="button" class="close" onclick="deleteNote({{ note.id }})">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </li>
-    {% endfor %}
-</ul>
-<form method="POST">
-    <textarea name="note" id="note" class="form-control" placeholder="{{ _('Enter note') }}"></textarea>
+<div class="container">
+    <div class="row">
+        {% for note in user.notes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                {% if note.image_post %}
+                <img src="{{ url_for('static', filename='uploads/' + note.image_post) }}" class="card-img-top" alt="{{ note.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ note.title }}</h5>
+                    <p class="card-text">{{ note.content }}</p>
+                    <button type="button" class="btn btn-danger" onclick="deleteNote({{ note.id }})">
+                        {{ _('Delete') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="text" name="title" class="form-control" placeholder="{{ _('Title') }}" required>
+    </div>
+    <div class="form-group">
+        <textarea name="content" class="form-control" placeholder="{{ _('Content') }}" required></textarea>
+    </div>
+    <div class="form-group">
+        <input type="file" name="image_post" class="form-control">
+    </div>
     <div align="center">
         <button type="submit" class="btn btn-primary">{{ _('Add Note') }}</button>
     </div>
 </form> 
+
 {% endblock %}

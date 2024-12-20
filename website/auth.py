@@ -4,9 +4,17 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from website.service import get_locale
-
+from flask_admin import expose, BaseView, AdminIndexView
+# from website.admin import initialize_admin
 
 auth = Blueprint('auth', __name__)
+
+class MyMainView(AdminIndexView):
+    @expose('/')
+    def admin_main(self):
+        posts = Post.query.order_by(desc(Post.date)).all()
+        image = url_for('static', filename=f'storage/post_img')
+        return self.render('admin/index.html', posts=posts, image=image)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():

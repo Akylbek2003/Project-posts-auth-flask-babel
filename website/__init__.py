@@ -7,6 +7,8 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+from website.admin import initialize_admin
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'qwertyuiop[]'
@@ -41,9 +43,9 @@ def create_app():
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-
+    initialize_admin(app, db)
     from .models import User, Note
-
+    
     create_database(app)
 
     login_manager = LoginManager()
